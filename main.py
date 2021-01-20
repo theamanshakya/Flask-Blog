@@ -1,6 +1,5 @@
 import math
-
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from datetime import datetime, timedelta
@@ -103,6 +102,7 @@ def contact():
                           recipients=[params['gmail_user']],
                           body=message + "\n" + phone
                           )
+        flash('Thank you for your query. We will contact you soon','success')
     return render_template('contact.html', params=params, session=session)
 
 
@@ -150,6 +150,7 @@ def edit(id):
                 db.session.add(post)
                 db.session.commit()
                 post_data = Posts.query.filter_by(id=id).first();
+                flash('Post Added Successfully', 'success')
                 return render_template('edit.html', params=params, session=session, post_id=id, post_data=post_data)
             else:
                 print('Adding another post')
@@ -161,9 +162,11 @@ def edit(id):
                 post.date = datetime.now()
                 db.session.add(post)
                 db.session.commit()
+                flash('Post Added Successfully', 'success')
                 print('hello')
                 return redirect('/edit/' + id)
                 post_data = Posts.query.filter_by(id=id).first()
+
                 return render_template('edit.html', params=params, session=session, post_id=id, post_data=post_data)
 
         print('Post Request Not Detected')
