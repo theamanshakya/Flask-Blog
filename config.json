@@ -1,0 +1,13 @@
+{
+  "params": {
+    "blog_name": "The Strange Code Master",
+    "local_server": "True",
+    "local_uri": "mysql://root:@localhost/tscm",
+    "prod_uri": "mysql://root:@localhost/tscm",
+    "fb_url": "https://www.facebook.com/tscm",
+    "tw_url": "https://www.twitter.com/tscm",
+    "gh_url": "https://www.github.com/tscm",
+    "admin_user": "admin@gmail.com",
+    "admin_password": "admin@123"
+  }
+}
